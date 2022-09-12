@@ -4,24 +4,26 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    flex-direction: column;
     background-color: #EDF6F9;
-    width: 800px;
-    height: 180px;
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.15); 
+    width: 25rem;
+    height: 20.625rem;
+    border-radius: 0.938rem;
+    box-shadow: 0 0.625rem 1.25rem rgba(255, 255, 255, 0.15); 
     button{
-        font-size: 18px;
+        width: 20.625rem;
+        height: 3.125rem;
+        font-size: 1.125rem;
         font-weight: bold;
-        border-radius: 10px;
+        border-radius: 0.625rem;
         border: none;
-        background-color: #83C5BE;
+        background-color: #006D77;
         color: #FFFFFF;
-        margin-top: 30px;
-        padding: 14px;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        padding: 0.875rem;
+        box-shadow: 0 0.375rem  0.938rem rgba(0, 0, 0, 0.15);
         cursor: pointer;
         :hover{
-            background-color: #006D77;
+            background-color: rgba(0, 109, 119, 0.73);
         }
     }
     

@@ -1,4 +1,4 @@
-import { Container,ContainerIcons } from "./CardStyled";
+import { Container,ContainerIcons, Icons } from "./CardStyled";
 import { FaTimes, FaPen } from "react-icons/fa";
 
 interface ICardDespesas{
@@ -14,14 +14,14 @@ export const CardDespesas: React.FC<ICardDespesas> = (props)=>{
             <h4>Nome: {props.nome}</h4>
             <h4>Valor: R${props.valor}</h4>
 
-            <ContainerIcons>
-                <div className="icon-Alterar">
+            <ContainerIcons >
+                <Icons className="icon-Alterar" backColor={"#62D450"}>
                     <FaPen size={20} onClick={props.alterarDespesas}/>
-                </div>
+                </Icons>
 
-                <div className="icon-Deletar">
+                <Icons className="icon-Deletar" backColor={"#FA2323"}>
                     <FaTimes  size={23} onClick={props.deleteDespesas}/>
-                </div>  
+                </Icons>  
             </ContainerIcons>
         </Container>
     )

@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
 import { AdicionarDespesas } from "../../components/AddDespesas";
 import { CardDespesas } from "../../components/CardDespesas";
-import { ContainerHomePage,ContainerInfo } from "./homePage";
+import { Container, ContainerHomePage } from "./homePage";
 import { db } from   "../../service/firebase";
 import { uid } from "uid";
 import { onValue, ref, remove, set, update } from "firebase/database";
+import { Navigation, Pagination} from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 export const HomePage = () =>{
     const [despesas, setDespesas] = useState<any[]>([]);
-    const [inputAlterar, setInputAlterar] = useState(true);
+    const [inputAlterar, setInputAlterar] = useState(false);
     const [despesasAlteradaID, setDespesasAlteradaID] = useState({})
+    const [tituloDespesa, setTituloDespesa] = useState("")
+    const [valorDespesa, setValorDespesa] = useState("")
 
     const valorTotalDespesas = (valorTotal: any[])=>{
         let somaDespesas = 0;
@@ -44,6 +51,9 @@ export const HomePage = () =>{
     // funcao para poder deletar os dados do bando
     const deletarDados = (des: any)=>{
         remove(ref(db,`/${des.uuid}`))
+        if(inputAlterar){
+            setInputAlterar(false)
+        }
     }
     // funcao para poder alterar os dados do bando
     const alterarDados = (despesaAlterada:any) =>{
@@ -51,53 +61,73 @@ export const HomePage = () =>{
             despesasAdicionadas:despesaAlterada,
             uuid:despesasAlteradaID,
         })
-        setInputAlterar(true)
+        setInputAlterar(false)
     }
     // funcao para poder pegar o id do meu dado que quero alterar
     const IdDespesasAlterada = (des: any)=>{
-        setInputAlterar(false)
+        setInputAlterar(true)
         setDespesasAlteradaID(des.uuid)
+        setTituloDespesa(des.despesasAdicionadas.tituloDespesa)
+        setValorDespesa(des.despesasAdicionadas.valorDespesa)
     }
     
     return(
         <ContainerHomePage>
             <h1>Minhas Despesas</h1>
-            {inputAlterar ?
-                <AdicionarDespesas 
-                    labelTitulo="Titulo"
-                    labelValor="Valor"
-                    despesasAdicionadas={
-                        (novasDespesas)=> salvarDadosNoDataBase(novasDespesas)
-                    }
-                /> 
-                :
-                <AdicionarDespesas 
-                    labelTitulo="Alterar Titulo"
-                    labelValor="Alterar Valor"
-                    despesasAdicionadas={
-                        (despesaAlterada)=> alterarDados(despesaAlterada)
-                    }
-                /> 
-            }
-            <ContainerInfo>
-                <h2>Quantidade de Despesas: {despesas.length}</h2>
-                <h2>Soma das Despesas: R$ {valorTotalDespesas(despesas)}</h2>
-            </ContainerInfo>
 
-            {
-                despesas.map((e)=>{
-                    return(
-                        <CardDespesas 
-                            key={e.despesasAdicionadas.tituloDespesa}
-                            nome={e.despesasAdicionadas.tituloDespesa}
-                            valor={e.despesasAdicionadas.valorDespesa} 
-                            deleteDespesas={() => deletarDados(e)}    
-                            alterarDespesas={() => IdDespesasAlterada(e)}               
-                        />
-                    )
-                })
-            }
-            
+            <Container>
+                <div className="CardAdicionarUmaDespesa">
+                    {inputAlterar ?
+                        <AdicionarDespesas 
+                            labelTitulo={"Alterar Titulo: " + tituloDespesa}
+                            labelValor={"Alterar Valor: R$ " + valorDespesa}
+                            despesasAdicionadas={
+                                (despesaAlterada)=> alterarDados(despesaAlterada)
+                            }
+                        /> 
+                        :
+                        <AdicionarDespesas 
+                            labelTitulo="Titulo da Despesa:"
+                            labelValor="Valor da Despesa:"
+                            despesasAdicionadas={
+                                (novasDespesas)=> salvarDadosNoDataBase(novasDespesas)
+                            }
+                        /> 
+                    }
+                    <div className="InfoDespesa">
+                        <h2>Quantidade de Despesas: {despesas.length}</h2>
+                        <h2>Soma das Despesas: R$ {valorTotalDespesas(despesas)}</h2>
+                    </div>
+                </div>
+                
+                <div className="ConteinerDosCards">
+                    <Swiper
+                        modules={[Navigation, Pagination]}
+                        slidesPerView={2}
+                        navigation
+                        pagination={{ clickable: true }}
+                        onSwiper={(swiper) => console.log(swiper)}
+                        onSlideChange={() => console.log('slide change')}
+                    >
+                       
+                    {
+                        despesas.map((e)=>{
+                            return(
+                                <SwiperSlide>
+                                    <CardDespesas 
+                                        key={e.despesasAdicionadas.tituloDespesa}
+                                        nome={e.despesasAdicionadas.tituloDespesa}
+                                        valor={e.despesasAdicionadas.valorDespesa} 
+                                        deleteDespesas={() => deletarDados(e)}    
+                                        alterarDespesas={() => IdDespesasAlterada(e)}               
+                                    />
+                                    </SwiperSlide>
+                                )
+                        })
+                    }
+                    </Swiper>
+                </div>
+            </Container>
         </ContainerHomePage>
     )
 }
