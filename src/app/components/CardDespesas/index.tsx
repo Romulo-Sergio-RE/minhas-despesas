@@ -4,8 +4,8 @@ import { FaTimes, FaPen } from "react-icons/fa";
 interface ICardDespesas{
     nome:string,
     valor:string,
-    deleteDespesas: () => void
-    alterarDespesas: () => void
+    deleteDespesas?: () => void
+    alterarDespesas?: () => void
 }
 
 export const CardDespesas: React.FC<ICardDespesas> = (props)=>{

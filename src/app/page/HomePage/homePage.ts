@@ -25,10 +25,12 @@ export const Container = styled.div`
         }
     }
     .CardAdicionarUmaDespesa{
+        margin-top: 0.938rem;
     }
     .ConteinerDosCards{
         display: flex;
-        align-items: center;
+        align-items: flex-end;
+        flex-direction: column;
         width: 40.625rem;
         .swiper{
             width: 40.625rem;
@@ -56,5 +58,17 @@ export const Container = styled.div`
             border-radius: 0.313rem;
             background-color: #EDF6F9;
         }
+    }
+    .TodasDepesas{
+        width: 11.063rem;
+        height: 3.125rem;
+        background-color: #EDF6F9;
+        border-radius: 0.75rem;
+        margin-right: 2.625rem;
+        border: none;
+        cursor: pointer;
+        color: #006D77;
+        font-size: 1.125rem;
+        font-weight: bold;
     }
 `;

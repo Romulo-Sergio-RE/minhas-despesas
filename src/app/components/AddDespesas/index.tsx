@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Container } from "./AddDespesasStyled";
 import { Input } from "../inputs";
+import { useForm } from "react-hook-form";
 
 interface IAddDespesas{
     labelTitulo:string,
@@ -13,7 +14,8 @@ export const AdicionarDespesas: React.FC<IAddDespesas> = (props) =>{
     const[tituloDespesa, setTituloDespesas] = useState("");
     const[valorDespesa, setValorDespesa] = useState("");
 
-    const adicionar = ()=>{
+    const adicionar = (e: FormEvent<HTMLFormElement>)=>{
+        e.preventDefault()
         props.despesasAdicionadas({
             tituloDespesa,
             valorDespesa,
@@ -23,23 +25,23 @@ export const AdicionarDespesas: React.FC<IAddDespesas> = (props) =>{
         setValorDespesa("")
     }
     return(
-        <Container>
+        <Container onSubmit={(e)=>adicionar(e)}>   
             <Input 
                 label={props.labelTitulo} 
                 inputType="text"
                 value={tituloDespesa}
                 placeholder={"Digite um titulo para a despesa"}
                 onChange={(valor)=>{setTituloDespesas(valor)}}
+                tipoInput={"titulo"}
             />
             <Input 
                 label={props.labelValor} 
-                inputType="text"
+                inputType="number"
                 value={valorDespesa}
                 placeholder={"Digite o valor da despesa"}
                 onChange={(valor)=>{setValorDespesa(valor)}}
             />
-
-            <button onClick={adicionar}>Adicionar Despesa</button>
+            <button>Adicionar Despesa</button>
         </Container>
     )
 }

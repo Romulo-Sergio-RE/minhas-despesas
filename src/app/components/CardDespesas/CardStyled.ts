@@ -11,6 +11,7 @@ export const Container = styled.div`
     height: 15.938rem;
     background-color: #EDF6F9;
     border-radius: 1.25rem;
+    margin: 0.625rem 0;
     h4{
         font-size: 1.5rem;
         font-weight: 600;

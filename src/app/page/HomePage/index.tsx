@@ -10,6 +10,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { ModalDespesa } from "../../components/modalTodasAsDespesas";
 
 export const HomePage = () =>{
     const [despesas, setDespesas] = useState<any[]>([]);
@@ -17,6 +18,7 @@ export const HomePage = () =>{
     const [despesasAlteradaID, setDespesasAlteradaID] = useState({})
     const [tituloDespesa, setTituloDespesa] = useState("")
     const [valorDespesa, setValorDespesa] = useState("")
+    const[isModalAberto, setIsModalAberto] = useState(false)
 
     const valorTotalDespesas = (valorTotal: any[])=>{
         let somaDespesas = 0;
@@ -101,6 +103,18 @@ export const HomePage = () =>{
                 </div>
                 
                 <div className="ConteinerDosCards">
+                {isModalAberto?
+                    <ModalDespesa 
+                        onClose={() => { setIsModalAberto(false)} } 
+                        arrayDespesas={despesas}
+                    />
+                    : 
+                    null
+                }
+                    <button className="TodasDepesas" onClick={() => setIsModalAberto(true)}> 
+                        Todas as Depesas
+                    </button>
+                    
                     <Swiper
                         modules={[Navigation, Pagination]}
                         slidesPerView={2}
