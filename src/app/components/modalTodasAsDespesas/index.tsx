@@ -9,7 +9,7 @@ interface ImodalProps{
 export const ModalDespesa:React.FC<ImodalProps> = (props)=>{
     const {deletarDados,IdDespesasAlterada} = useContext(ApiDataContext)
     return(
-        <ContainerModal>
+        <ContainerModal onClick={props.onClose}>
             <ModalDespesas>
                 <button onClick={props.onClose}>Sair</button>
                 <div>
@@ -21,7 +21,8 @@ export const ModalDespesa:React.FC<ImodalProps> = (props)=>{
                                     nome={e.despesasAdicionadas.tituloDespesa}
                                     valor={e.despesasAdicionadas.valorDespesa} 
                                     deleteDespesas={() => deletarDados(e)}    
-                                    alterarDespesas={() => IdDespesasAlterada(e)}               
+                                    alterarDespesas={() => IdDespesasAlterada(e)}    
+                                    fecharModal={props.onClose}           
                                 />
                             )
                         })

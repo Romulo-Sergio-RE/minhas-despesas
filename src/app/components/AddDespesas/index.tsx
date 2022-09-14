@@ -1,11 +1,13 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import { Container } from "./AddDespesasStyled";
 import { Input } from "../inputs";
 import { useForm } from "react-hook-form";
+import { ApiDataContext } from "../../context/ApiDataContext";
 
 interface IAddDespesas{
     labelTitulo:string,
     labelValor:string,
+    tituloBotao:string,
     despesasAdicionadas:(valor:{})=> void
 }
 
@@ -13,6 +15,7 @@ export const AdicionarDespesas: React.FC<IAddDespesas> = (props) =>{
 
     const[tituloDespesa, setTituloDespesas] = useState("");
     const[valorDespesa, setValorDespesa] = useState("");
+    const {inputAlterar,setInputAlterar} = useContext(ApiDataContext)
 
     const adicionar = (e: FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
@@ -41,7 +44,15 @@ export const AdicionarDespesas: React.FC<IAddDespesas> = (props) =>{
                 placeholder={"Digite o valor da despesa"}
                 onChange={(valor)=>{setValorDespesa(valor)}}
             />
-            <button>Adicionar Despesa</button>
+            {inputAlterar?
+                <>
+                    <button>{props.tituloBotao}</button>
+                    <button className="CancelarDespesa"onClick={()=>setInputAlterar(false)}>Cancelar a Alteracao</button>
+                </>
+                :
+                <button>{props.tituloBotao}</button>
+            }
+           
         </Container>
     )
 }

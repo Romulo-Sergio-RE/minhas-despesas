@@ -16,6 +16,7 @@ type ContextProps = {
     alterarDados: (despesaAlterada: any) => void
     IdDespesasAlterada: (des: any) => void
     salvarDadosNoDataBase: (despesasAdicionadas: any) => void
+    setInputAlterar: (value: React.SetStateAction<boolean>) => void
 };
 
 export const ApiDataContext = createContext<ContextProps>(null!)
@@ -71,7 +72,7 @@ export const ApiDataProvider = ({children}:ApiDataContextProps) => {
         setValorDespesa(des.despesasAdicionadas.valorDespesa)
     }
     return(
-        <ApiDataContext.Provider value={{inputAlterar,IdDespesasAlterada,valorDespesa,tituloDespesa,alterarDados,deletarDados,salvarDadosNoDataBase, despesas,}}>
+        <ApiDataContext.Provider value={{setInputAlterar,inputAlterar,IdDespesasAlterada,valorDespesa,tituloDespesa,alterarDados,deletarDados,salvarDadosNoDataBase, despesas,}}>
             {children}
         </ApiDataContext.Provider>
     )

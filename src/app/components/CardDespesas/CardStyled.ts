@@ -16,6 +16,7 @@ export const Container = styled.div`
         font-size: 1.5rem;
         font-weight: 600;
         margin: 0 0 0 1.25rem;
+        color: rgba(0, 109, 119, 1);
     }
 `;
 export const ContainerIcons = styled.div`

@@ -1,10 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AdicionarDespesas } from "../../components/AddDespesas";
 import { CardDespesas } from "../../components/CardDespesas";
 import { Container, ContainerHomePage } from "./homePage";
-import { db } from   "../../service/firebase";
-import { uid } from "uid";
-import { onValue, ref, remove, set, update } from "firebase/database";
 import { Navigation, Pagination} from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -38,6 +35,7 @@ export const HomePage = () =>{
                         <AdicionarDespesas 
                             labelTitulo={"Alterar Titulo: " + tituloDespesa}
                             labelValor={"Alterar Valor: R$ " + valorDespesa}
+                            tituloBotao={"Alterar a Despesa"}
                             despesasAdicionadas={
                                 (despesaAlterada)=> alterarDados(despesaAlterada)
                             }
@@ -46,6 +44,7 @@ export const HomePage = () =>{
                         <AdicionarDespesas 
                             labelTitulo="Titulo da Despesa:"
                             labelValor="Valor da Despesa:"
+                            tituloBotao={"Adicionar Despesa"}
                             despesasAdicionadas={
                                 (novasDespesas)=> salvarDadosNoDataBase(novasDespesas)
                             }

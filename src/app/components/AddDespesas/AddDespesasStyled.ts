@@ -17,13 +17,19 @@ export const Container = styled.form`
         font-weight: bold;
         border-radius: 0.625rem;
         border: none;
-        background-color: #006D77;
+        background-color: rgba(0, 109, 119, 1);
         color: #FFFFFF;
         padding: 0.875rem;
         box-shadow: 0 0.375rem  0.938rem rgba(0, 0, 0, 0.15);
         cursor: pointer;
         :hover{
-            background-color: rgba(0, 109, 119, 0.73);
+            background-color: rgba(0, 109, 119, 0.9);
+        }
+    }
+    .CancelarDespesa{
+        background-color: rgba(250, 35, 35, 1);
+        :hover{
+            background-color: rgba(250, 35, 35, 0.9);
         }
     }
     

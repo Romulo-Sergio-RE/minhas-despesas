@@ -6,7 +6,7 @@ export const Container = styled.div`
         font-size: 1.125rem;
         font-family: 'Open Sans', sans-serif;
         font-weight: 600;
-        color: #000000;
+        color: rgba(0, 109, 119, 1);
         margin-bottom: 0.5rem;
     }
     input{
