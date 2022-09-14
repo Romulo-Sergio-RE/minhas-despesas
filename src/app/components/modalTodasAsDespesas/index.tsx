@@ -1,3 +1,5 @@
+import { useContext } from "react"
+import { ApiDataContext } from "../../context/ApiDataContext"
 import { CardDespesas } from "../CardDespesas"
 import { ContainerModal,ModalDespesas, } from "./styledModal"
 interface ImodalProps{
@@ -5,6 +7,7 @@ interface ImodalProps{
     arrayDespesas: any[]
 }
 export const ModalDespesa:React.FC<ImodalProps> = (props)=>{
+    const {deletarDados,IdDespesasAlterada} = useContext(ApiDataContext)
     return(
         <ContainerModal>
             <ModalDespesas>
@@ -16,7 +19,9 @@ export const ModalDespesa:React.FC<ImodalProps> = (props)=>{
                                 <CardDespesas 
                                     key={e.despesasAdicionadas.tituloDespesa}
                                     nome={e.despesasAdicionadas.tituloDespesa}
-                                    valor={e.despesasAdicionadas.valorDespesa}              
+                                    valor={e.despesasAdicionadas.valorDespesa} 
+                                    deleteDespesas={() => deletarDados(e)}    
+                                    alterarDespesas={() => IdDespesasAlterada(e)}               
                                 />
                             )
                         })

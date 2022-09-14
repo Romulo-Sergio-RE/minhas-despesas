@@ -14,20 +14,30 @@ export const ContainerModal = styled.div`
     position: fixed;
 `;
 export const ModalDespesas = styled.div`
-    width: 750px;
-    height: 600px;
-    background-color: #111111;
-    border-radius: 20px;
+    width: 37.5rem;
+    height: 37.5rem;
+    background-color: #006D77;
+    border-radius: 1.25rem;
     display: flex;
     align-items: center;
     justify-content: baseline;
     flex-direction: column;
     overflow: auto;
-    margin: 10px 0;
+    padding: 0.625rem;
     button{
-        width: 180px;
-        height: 50px;
-        color: red;
-        margin: 10px 0;
+        width: 6.25rem;
+        margin: 0.625rem 0;
+        padding: 0.313rem;
+        background-color: #EDF6F9;
+        border: none;
+        cursor: pointer;
+        color: #006D77;
+        font-size: 1.125rem;
+        border-radius: 0.75rem;
     }
+    div{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
 `;
