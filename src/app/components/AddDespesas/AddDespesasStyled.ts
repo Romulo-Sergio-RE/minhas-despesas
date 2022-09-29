@@ -32,5 +32,22 @@ export const Container = styled.form`
             background-color: rgba(250, 35, 35, 0.9);
         }
     }
-    
+    @media only screen and (min-width: 992px) and (max-width: 1200px) {
+        width: 350px;
+        height: 330px;
+        button{
+            width: 300px;
+        }
+    }
+    @media only screen and (max-width: 530px){
+        width: 350px;
+        height: 330px;
+        button{
+            width: 300px;
+        }
+    }
+    @media only screen and (max-width: 320px){
+        width: 300px;
+        height: 300px;
+    }
 `;

@@ -71,4 +71,74 @@ export const Container = styled.div`
         font-size: 1.125rem;
         font-weight: bold;
     }
+    @media only screen and (max-width: 530px){
+        .ConteinerDosCards{
+            .swiper-button-prev{
+                padding-left: 60px;
+            }
+            .swiper-button-next{
+                padding-right: 60px;
+            }
+        }
+        .TodasDepesas{
+            width: 155px;
+            height: 50px;
+            font-size: 1rem;
+        }
+    }
+    @media only screen and (max-width: 600px){
+        align-items: center;
+        flex-direction: column;
+        .ConteinerDosCards{
+            width: 31.5rem;
+            .swiper{
+                width: 31.5rem;
+            }
+        }
+        .InfoDespesa{
+            align-items: center;
+        }
+        .TodasDepesas{
+            margin-top: 20px;
+            margin-right: 3rem;
+        }
+    }
+    @media only screen and (min-width: 600px) and (max-width: 768px) {
+        align-items: center;
+        flex-direction: column;
+        .TodasDepesas{
+            margin-right: 3rem;
+        }
+        .InfoDespesa{
+            align-items: center;
+        }
+        .ConteinerDosCards{
+            width: 34rem;
+            .swiper{
+                width: 34rem;
+            }
+        }
+    }
+    @media only screen and (min-width: 768px) and (max-width: 992px) {
+        align-items: center;
+        flex-direction: column;
+        .TodasDepesas{
+            margin-top: 25px;
+            margin-right: 4.2rem;
+        }
+        .InfoDespesa{
+            align-items: center;
+        }
+    }
+    @media only screen and (min-width: 992px) and (max-width: 1200px) {
+        .ConteinerDosCards{
+            width: 38rem;
+            .swiper{
+                width: 38rem;
+            }
+        }
+        .TodasDepesas{
+            margin-right: 3rem;
+        }
+    }
 `;

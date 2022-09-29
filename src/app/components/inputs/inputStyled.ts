@@ -20,4 +20,14 @@ export const Container = styled.div`
             font-size: 1rem;
         }
     }
+    @media only screen and (min-width: 992px) and (max-width: 1200px) {
+        input{
+            width: 300px;
+        }
+    }
+    @media only screen and (max-width: 530px){
+        input{
+            width: 300px;
+        }
+    }
 `;
