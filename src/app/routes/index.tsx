@@ -1,16 +1,12 @@
-import { BrowserRouter, Routes, Route} from "react-router-dom"
-import { ApiDataProvider } from "../context/ApiDataContext"
-import { HomePage } from "../page/HomePage"
+import { BrowserRouter, Route , Routes} from "react-router-dom"
+import { HomePage } from "../page/homePage"
 
-export const Rotas =({children}:any)=>{
+export const RoutesPath = ()=>{
     return (
         <BrowserRouter>
-            {children}
-            <ApiDataProvider>
-                <Routes>
-                    <Route path="/" element={<HomePage />}/>
-                </Routes>
-            </ApiDataProvider>
+            <Routes>
+                <Route path="/" element={<HomePage />}/>
+            </Routes>
         </BrowserRouter>
     )
 }

@@ -1,12 +1,11 @@
 import React from 'react';
-import { GlobalStyles } from './GlobalStyled';
-import { Rotas } from './routes';
+import { RoutesPath } from './routes';
 
 export const App = () => {
   return (
-    <Rotas>
-      <GlobalStyles />
-    </Rotas>
+    <>
+      <RoutesPath />
+    </>
   );
 }
 
