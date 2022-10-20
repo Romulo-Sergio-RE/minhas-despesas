@@ -10,7 +10,6 @@ export const Container = styled.div`
     h3{
         font-size: 1.25rem;
         color: #252525;
-
     }
     button{
         width: 14.625rem;
@@ -23,6 +22,18 @@ export const Container = styled.div`
         cursor: pointer;
         :hover{
             transform: scale(1.03);
+        }
+    }
+    @media only screen and (min-width: 565px) {
+        width: 29.375rem;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        h3{
+            font-size: 1.375rem;
+        }
+        button{
+            font-size: 1.0625rem;
         }
     }
 `;

@@ -57,4 +57,13 @@ export const Container = styled.form`
         position: absolute;
         font-size: 1.125rem;
     }
+    @media only screen and (min-width: 565px) {
+        width: 33.875rem;
+        height: 14.375rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+        padding: 0.9375rem;
+    }
 `;
