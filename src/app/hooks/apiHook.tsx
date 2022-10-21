@@ -13,17 +13,19 @@ export const UseApi = ()=> ({
         const response = await api.get(`expense/${id}`)
         return response.data
     },
-    postExpense: async (title: string, value:string)=>{
+    postExpense: async (title: string, value:string, date:string)=>{
         const response = await api.post("expense",{
-            "title":title,
-            "value":value,
+            "title": title,
+            "value": value,
+            "date": date,
         })
         return response.data
     },
-    updateExpense: async (id:string, title:string, value:string)=>{
+    updateExpense: async (id:string, title:string, value:string, date:string)=>{
         const response = await api.put(`expense/${id}`,{
-            "title":title,
-            "value":value,
+            "title": title,
+            "value": value,
+            "date": date,
         })
         return response.data
     },

@@ -22,7 +22,7 @@ export const HomePage = () =>{
     console.log(message)
     return(
         <Container>
-            <button type="button" onClick={()=> updateExpense("63519a0e435376818a49913e", "carro3", "60000")}>teste da api</button>
+            <button type="button" onClick={()=> updateExpense("63519a0e435376818a49913e", "carro", "60000","20/02/2000")}>teste da api</button>
             <button type="button" onClick={getAllExpense}>pegar todos os dados</button>
         </Container>
     )

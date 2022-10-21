@@ -9,10 +9,10 @@ type ContextProps = {
     message: {message: string};
     expenseById: {title: string,value: string};
     getAllExpense: () => Promise<void>;
-    postExpense: (title:string, value:string) => Promise<void>;
+    postExpense: (title:string, value:string,date:string) => Promise<void>;
     getAllExpenseById: (id: string) => Promise<void>;
     deleteExpense: (id: string) => Promise<void>;
-    updateExpense: (id: string,title: string,value: string) => Promise<void>;
+    updateExpense: (id: string,title: string,value: string,date:string) => Promise<void>;
 };
 export const ApiDataContext = createContext<ContextProps>(null!);
 
@@ -31,16 +31,16 @@ export const ApiDataProvider = ({children}:ExpenseContextProps)=>{
         const dados = await api.getExpenseById(id)
         setExpenseById(dados)
     }
-    const postExpense = async (title:string, value:string) =>{
-        const dados = await api.postExpense(title,value)
+    const postExpense = async (title:string, value:string, date:string) =>{
+        const dados = await api.postExpense(title, value, date)
         setMessage(dados)
     }
     const deleteExpense = async (id:string) =>{
         const dados = await api.deleteExpense(id)
         setMessage(dados)
     }
-    const updateExpense = async (id: string,title: string,value: string,) =>{
-        const dados = await api.updateExpense(id, title, value)
+    const updateExpense = async (id: string,title: string,value: string, date:string) =>{
+        const dados = await api.updateExpense(id, title, value , date)
         setMessage(dados)
     }
     return(
