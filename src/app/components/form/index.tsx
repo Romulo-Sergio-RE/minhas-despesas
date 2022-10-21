@@ -24,7 +24,8 @@ export const Form = () =>{
         resolver: yupResolver(schema),
     });
     const onSubmit = (data: FormData) => {
-        console.log(data)
+        const date = data.date.split('-').reverse().join('/')
+        postExpense(data.title,data.value,date)
     };
     //mudar o formato da data = data.date.split('-').reverse().join('/')
     // fazer o card segundario height 420px
