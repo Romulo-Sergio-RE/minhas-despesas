@@ -1,6 +1,11 @@
 import { Container } from "./styled"
 
-export const CardExpense = ()=>{
+interface CardProps {
+    title: string,
+    value: string,
+    date: string,
+}
+export const CardExpense: React.FC<CardProps> = (props)=>{
     return(
         <Container>
             <div className="info-card">
