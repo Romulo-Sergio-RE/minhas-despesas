@@ -1,4 +1,4 @@
-import { createContext,ReactNode,useState } from "react";
+import { createContext,ReactNode,useEffect,useState } from "react";
 import { UseApi } from "../hooks/apiHook";
 
 type ExpenseContextProps = {
@@ -8,8 +8,8 @@ type ContextProps = {
     allExpense: any[];
     message: {message: string};
     expenseById: {title: string,value: string};
-    getAllExpense: () => Promise<void>;
     postExpense: (title:string, value:string,date:string) => Promise<void>;
+    getAllExpense: () => Promise<void>
     getAllExpenseById: (id: string) => Promise<void>;
     deleteExpense: (id: string) => Promise<void>;
     updateExpense: (id: string,title: string,value: string,date:string) => Promise<void>;
@@ -46,7 +46,7 @@ export const ApiDataProvider = ({children}:ExpenseContextProps)=>{
     return(
         <ApiDataContext.Provider 
             value={
-                {
+                {   
                     getAllExpense,
                     getAllExpenseById,
                     postExpense,
