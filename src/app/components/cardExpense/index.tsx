@@ -7,10 +7,22 @@ interface CardProps {
     title: string,
     value: string,
     date: string,
+    reloding: () => void,
+    getID: (id: string) => void
+    formExchange: (value: boolean) => void
 }
 export const CardExpense: React.FC<CardProps> = (props)=>{
 
     const {deleteExpense} = useContext(ApiDataContext)
+
+    const buttonDelete = () =>{
+        deleteExpense(props.id)
+        props.reloding()
+    }
+    const buttonUpdate = () =>{
+        props.getID(props.id)
+        props.formExchange(false)
+    }
 
     return(
         <Container>
@@ -21,11 +33,12 @@ export const CardExpense: React.FC<CardProps> = (props)=>{
             </div>
             <div className="btns">
                 <button 
+                    onClick={buttonUpdate}
                     type="button"
                     className="btn-update"
                 >Alterar</button>
                 <button 
-                    onClick={()=>deleteExpense(props.id)}
+                    onClick={buttonDelete}
                     type="button"
                     className="btn-delete"
                 >Excluir</button>
