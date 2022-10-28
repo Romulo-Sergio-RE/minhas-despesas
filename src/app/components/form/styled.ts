@@ -5,11 +5,17 @@ export const Container = styled.form`
     height: 23.75rem;
     background-color: #0A1128;
     border-radius: 0.9375rem;
+    margin-top: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: 2.5rem;
+    .container-input{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
     div{
         margin: 0.625rem 0;
     }
@@ -59,12 +65,17 @@ export const Container = styled.form`
     }
     @media only screen and (min-width: 565px) {
         width: 33.875rem;
-        height: 14.375rem;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-around;
+        height: 18.75rem;
         padding: 0.9375rem;
+        .container-input{
+            align-items: center;
+            justify-content: left;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        div{
+            margin: 0.625rem 0.4375rem;
+        }
     }
 `;
 export const ContainerUpdate = styled.form`
@@ -77,6 +88,16 @@ export const ContainerUpdate = styled.form`
     justify-content: center;
     flex-direction: column;
     margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .container-input{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
     div{
         margin: 0.625rem 0;
     }
@@ -131,11 +152,23 @@ export const ContainerUpdate = styled.form`
     }
     @media only screen and (min-width: 565px) {
         width: 33.875rem;
-        height: 14.375rem;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-around;
+        height: 18.75rem;
         padding: 0.9375rem;
+        .container-input{
+            align-items: center;
+            justify-content: left;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .container-btns{
+            width: 30rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+        div{
+            margin: 0.625rem 0.4375rem;
+        }
     }
 `;

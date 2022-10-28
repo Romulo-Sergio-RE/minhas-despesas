@@ -49,42 +49,48 @@ export const Form:React.FC<FormProp> = (props) =>{
         <>
         {props.formType === true ?
             <Container onSubmit={handleSubmit(onSubmitPost)}>
-                <div>
-                    <label>Titulo:</label>
-                    <input type="text" {...register("title")} />
-                    <p>{errors.title?.message}</p>
-                </div>
-                <div>
-                    <label>Valor:</label>
-                    <input type="number" {...register("value")} />
-                    <p>{errors.value?.message}</p>
-                </div>
-                <div>
-                    <label>Data:</label>
-                    <input type="date"{...register("date")} />
-                    <p>{errors.date?.message}</p>
+                <div className='container-input'>
+                    <div>
+                        <label>Titulo:</label>
+                        <input type="text" {...register("title")} />
+                        <p>{errors.title?.message}</p>
+                    </div>
+                    <div>
+                        <label>Valor:</label>
+                        <input type="number" {...register("value")} />
+                        <p>{errors.value?.message}</p>
+                    </div>
+                    <div>
+                        <label>Data:</label>
+                        <input type="date"{...register("date")} />
+                        <p>{errors.date?.message}</p>
+                    </div>
                 </div>
                 <button type="submit" >Cadastrar Despesa</button>
             </Container>
             :
             <ContainerUpdate onSubmit={handleSubmit(onSubmitUpdate)}>
-                <div>
-                    <label>Titulo:</label>
-                    <input type="text" {...register("title")} />
-                    <p>{errors.title?.message}</p>
+                <div className='container-input'>
+                    <div>
+                        <label>Titulo:</label>
+                        <input type="text" {...register("title")} />
+                        <p>{errors.title?.message}</p>
+                    </div>
+                    <div>
+                        <label>Valor:</label>
+                        <input type="number" {...register("value")} />
+                        <p>{errors.value?.message}</p>
+                    </div>
+                    <div>
+                        <label>Data:</label>
+                        <input type="date"{...register("date")} />
+                        <p>{errors.date?.message}</p>
+                    </div>
                 </div>
-                <div>
-                    <label>Valor:</label>
-                    <input type="number" {...register("value")} />
-                    <p>{errors.value?.message}</p>
+                <div className='container-btns'>
+                    <button type="submit" className='btnSave'>Salvar Alteracao</button>
+                    <button type="submit" onClick={props.setFormtype}className='btnUpdate'>Cancelar Alteracao</button>
                 </div>
-                <div>
-                    <label>Data:</label>
-                    <input type="date"{...register("date")} />
-                    <p>{errors.date?.message}</p>
-                </div>
-                <button type="submit" className='btnSave'>Salvar Alteracao</button>
-                <button type="submit" onClick={props.setFormtype}className='btnUpdate'>Cancelar Alteracao</button>
             </ContainerUpdate>
         }
         </>

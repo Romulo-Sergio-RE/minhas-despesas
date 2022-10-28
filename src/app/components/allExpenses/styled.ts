@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div`      
     height: 5.5rem;
     display: flex;
     align-items: left;
