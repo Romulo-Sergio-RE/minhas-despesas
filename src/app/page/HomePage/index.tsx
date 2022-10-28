@@ -1,18 +1,10 @@
 import { useContext, useEffect, useState } from "react"
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper';
 import { AllExpenses } from "../../components/allExpenses"
-import { CardExpense } from "../../components/cardExpense"
 import { Form } from "../../components/form"
 import { Header } from "../../components/header"
 import { ApiDataContext } from "../../context/apiContext"
-
-
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
 import { Container } from "./styled"
+import { Carousel } from "../../components/carousel";
 
 export const HomePage = () =>{
 
@@ -20,10 +12,24 @@ export const HomePage = () =>{
     const[getIdExpense, setGetIdExpense] = useState("")
     const[FormExchange, setFormExchange] = useState(true)
 
-    const{getAllExpense,allExpense} = useContext(ApiDataContext);
+    const[spaceBetweenSwiper,setSpaceBetweenSwiper] = useState(0)
+    const[slidePerView,setSlidePerView] = useState(0)
+
+    const dataSwiper = () =>{
+        if(window.screen.width <= 570){
+            setSpaceBetweenSwiper(3)
+            setSlidePerView(1)
+        }else{
+            setSpaceBetweenSwiper(2)
+            setSlidePerView(2)
+        }
+    }
+
+    const{getAllExpense} = useContext(ApiDataContext);
 
     useEffect(()=>{
         getAllExpense()
+        dataSwiper()
         if(loading){
             window.location.reload()
             getAllExpense()
@@ -37,41 +43,16 @@ export const HomePage = () =>{
                 reloding={() => setLoading(!loading)}
                 id={getIdExpense}
                 formType={FormExchange}
+                setFormtype={()=>setFormExchange(!FormExchange)}
             />
             <AllExpenses />
-            <div className="carrossel">
-                <Swiper
-                    // spaceBetween={3}
-                    // slidesPerView={1}
-                    // width 330px
-                    modules={[Navigation, Pagination,]}
-                    spaceBetween={2}
-                    slidesPerView={2}
-                    navigation
-                    pagination={{ clickable: true }}
-                    onSwiper={(swiper) => console.log(swiper)}
-                    onSlideChange={() => console.log('slide change')}
-                >
-                    {
-                        allExpense.map((expense)=>{
-                            return(
-                                <SwiperSlide>
-                                <CardExpense 
-                                    key={expense._id}
-                                    id={expense._id}
-                                    title={expense.title}
-                                    value={expense.value}
-                                    date={expense.date}
-                                    reloding={() => setLoading(!loading)}
-                                    getID={setGetIdExpense}
-                                    formExchange={setFormExchange}
-                                />
-                                </SwiperSlide>
-                            )
-                        })
-                    }
-                </Swiper>
-            </div>
+            <Carousel 
+                spaceBetweenSwiper={spaceBetweenSwiper}
+                slidePerView={slidePerView}
+                reloding={() => setLoading(!loading)}
+                getID={setGetIdExpense}
+                formExchange={setFormExchange}
+            />
         </Container>
     )
 }

@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from "yup";
 import { ApiDataContext } from '../../context/apiContext';
-import { Container } from "./styled"
+import { Container, ContainerUpdate } from "./styled"
 
 interface FormData  {
     title: string,
@@ -15,6 +15,7 @@ interface FormProp {
     id: string,
     formType: boolean,
     reloding: () => void
+    setFormtype: ()=> void
 }
 
 const schema = yup.object({
@@ -66,7 +67,7 @@ export const Form:React.FC<FormProp> = (props) =>{
                 <button type="submit" >Cadastrar Despesa</button>
             </Container>
             :
-            <Container onSubmit={handleSubmit(onSubmitUpdate)}>
+            <ContainerUpdate onSubmit={handleSubmit(onSubmitUpdate)}>
                 <div>
                     <label>Titulo:</label>
                     <input type="text" {...register("title")} />
@@ -82,8 +83,9 @@ export const Form:React.FC<FormProp> = (props) =>{
                     <input type="date"{...register("date")} />
                     <p>{errors.date?.message}</p>
                 </div>
-                <button type="submit" >Alterar Despesa</button>
-            </Container>
+                <button type="submit" className='btnSave'>Salvar Alteracao</button>
+                <button type="submit" onClick={props.setFormtype}className='btnUpdate'>Cancelar Alteracao</button>
+            </ContainerUpdate>
         }
         </>
     )
