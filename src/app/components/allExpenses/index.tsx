@@ -9,7 +9,6 @@ export const AllExpenses = () =>{
     return(
         <Container>
             <h3>Total de Despesas: {allExpense.length}</h3>
-            <button type="button">Mostrar Todas as Despesas</button>
         </Container>
     )
 }

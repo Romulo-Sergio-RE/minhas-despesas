@@ -63,6 +63,9 @@ export const Container = styled.form`
         position: absolute;
         font-size: 1.125rem;
     }
+    span{
+        color: #ffffff;
+    }
     @media only screen and (min-width: 565px) {
         width: 33.875rem;
         height: 18.75rem;

@@ -15,6 +15,7 @@ export const HomePage = () =>{
     const[spaceBetweenSwiper,setSpaceBetweenSwiper] = useState(0)
     const[slidePerView,setSlidePerView] = useState(0)
 
+
     const dataSwiper = () =>{
         if(window.screen.width <= 570){
             setSpaceBetweenSwiper(3)
